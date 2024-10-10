@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdController;
+use App\Http\Controllers\TableController;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Dcat\Admin\Admin;
@@ -15,6 +17,11 @@ Route::group([
     $router->get('/', 'HomeController@index');
 
     $router->resource('users', 'UserController');
+
+    // 广告
+    $router->resource('ad', 'Ad\AdController');
+
+    $router->resource('table', 'Ad\TableController');
 
     // 布局示例
     $router->get('layout', 'LayoutController@index');
@@ -116,3 +123,7 @@ Route::group([
     $router->get('/extensions/ueditor/preview', 'Extensions\UeditorController@preview');
 
 });
+
+Route::get('ad', [AdController::class, 'index']);
+Route::get('table', [TableController::class, 'index']);
+
