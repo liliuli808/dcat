@@ -9,7 +9,7 @@ class AdController
 {
 
     public function index(Request $request) {
-        return Ad::query()->orderBy('sort')
+        return Ad::query()
             ->where('type', $request->type)
             ->get(['id','img_url','jump_url'])->toArray();
     }

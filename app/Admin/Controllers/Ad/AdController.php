@@ -33,7 +33,7 @@ class AdController  extends AdminController
     {
         return Form::make(new Ad(), function (Form $form) {
             $form->display('id',"Id");
-            $form->text('img_url', "图片")->required();
+            $form->image('img_url', "图片")->disk('public')->saveFullUrl()->required();
             $form->text('jump_url', '跳转地址')->required();
             $form->select('type', '类型')->options([
                1 => '轮播图',
